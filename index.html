@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gabriella & Matheus</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: #fff0f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-image: url('https://emojiisland.com/cdn/shop/products/Red_Heart_Emoji_large.png');
+      background-size: 100px;
+      background-repeat: repeat;
+    }
+    .container {
+      background: white;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      max-width: 600px;
+      text-align: center;
+    }
+    input[type="password"] {
+      padding: 10px;
+      margin-top: 10px;
+      font-size: 1rem;
+      width: 80%;
+    }
+    button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      background-color: palevioletred;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .hidden {
+      display: none;
+    }
+    .photo {
+      width: 100%;
+      border-radius: 12px;
+    }
+    .moment {
+      margin-top: 20px;
+      padding: 1rem;
+      background-color: #fff5f7;
+      border-radius: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="login">
+    <h2>Digite a senha para abrir a carta 💌</h2>
+    <p><strong>Dica:</strong> Data que começamos a conversar novamente</p>
+    <input type="password" id="senha" placeholder="Digite a senha...">
+    <button onclick="verificarSenha()">Acessar</button>
+    <p id="erro" style="color: red;"></p>
+  </div>
+
+  <div class="container hidden" id="carta">
+    <img class="photo" src="./20250525_164924.jpg" alt="Capa do casal" />
+    <h2>Gabriella & Matheus</h2>
+    
+<audio id="musica" style="display:none;">
+  <source src="https://www.mboxdrive.com/Nando%20Reis%20-%20De%20Janeiro%20a%20Janeiro%20ft.%20Roberta%20Campos.mp3" type="audio/mpeg">
+  Seu navegador não suporta áudio.
+</audio>
+
+      <source src="https://www.mboxdrive.com/Nando%20Reis%20-%20De%20Janeiro%20a%20Janeiro%20ft.%20Roberta%20Campos.mp3" type="audio/mpeg">
+      Seu navegador não suporta áudio.
+    </audio>
+    <p style="text-align: left; margin-top: 1rem;">
+      Oi meu amor! tudo bem??<br><br>
+      Eu falei que o dia dos namorados não passaria em branco, né? É simples, mas foi de coração.<br><br>
+      Queria te dizer o quanto você se tornou especial pra mim, em tão pouco tempo, e o desejo que eu tenho de passar o resto da minha vida com você. Apesar de estarmos a pouco tempo juntos, você sempre fez eu me sentir amada, e, principalmente fazer eu me amar cada vez mais. Você é tudo que eu sonhei, tem como não te amar? É impossível...<br><br>
+      Você é uma pessoa maravilhosa, tem um jeitinho único que só reforça meu desejo de ficar ao seu lado, e como eu já te falei, enquanto estivermos junto, farei de tudo para você não se sentir sozinho novamente (até porque o tanto que eu te perturbo no dia nem tem como ksksk).<br><br>
+      Me desculpa estar sendo intensa desse jeito, mas acredito que ser assim ajuda a vivermos uma vida mais feliz, mais colorida e divertida, e de verdade, eu odiaria ser o oposto disso.<br><br>
+      Se você topar, eu espero que possamos viver muitos momentos juntos ainda, e que possamos crescer juntos, lado a lado, vendo cada conquista do outro e vibrando alegremente como se fosse a sua própria conquista.<br><br>
+      Te amarei de janeiro à janeiro♡<br>
+      com amor: Gabs
+    </p>
+    <div id="contador" style="margin-top: 1rem; font-weight: bold;"></div>
+    <div class="moment">
+      <h3>30/04/2025 — nosso primeiro encontro♡</h3>
+      <img class="photo" src="./IMG-20250430-WA0058.jpg" />
+      <p>Lembra desse momento? Confesso que estava nervosa... foi melhor do que eu imaginava, principalmente por estar ao seu lado ♡</p>
+    </div>
+    <div class="moment">
+      <h3>25/05/2025 — nosso primeiro show</h3>
+      <img class="photo" src="./20250525_173532.jpg" />
+      <p>Não foi há muito tempo, mas queria recordar, por ter sido tão especial e único, principalmente ao seu lado♡</p>
+    </div>
+  </div>
+
+  <script>
+    function verificarSenha() {
+      const senha = document.getElementById('senha').value;
+      if (senha === '06052025') {
+        document.getElementById('login').classList.add('hidden');
+        document.getElementById('carta').classList.remove('hidden');
+        document.getElementById('musica').play();
+        iniciarContador();
+      } else {
+        document.getElementById('erro').textContent = 'tá errado queridinho, é melhor você lembrar se não quiser apanhar em';
+      }
+    }
+
+    function iniciarContador() {
+      const inicio = new Date('2025-05-06T00:00:00');
+      const el = document.getElementById('contador');
+      function atualizar() {
+        const agora = new Date();
+        const diff = agora - inicio;
+        const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const horas = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const minutos = Math.floor((diff / (1000 * 60)) % 60);
+        const segundos = Math.floor((diff / 1000) % 60);
+        el.textContent = `Estamos juntos há ${dias} dias, ${horas} horas, ${minutos} minutos e ${segundos} segundos 💕`;
+      }
+      setInterval(atualizar, 1000);
+      atualizar();
+    }
+  </script>
+</body>
+</html>
